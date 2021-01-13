@@ -15,16 +15,22 @@ and ampersand (&) for conjuction.
 You can use the parsers you have written from the previous assignment to handle the
 parsing of lexemes of the logical expressions.
 Some example of the resolve interpreter function are shown below:
-> resolve "!F"
+
+resolve "!F"
 T
-> resolve "T | F"
+
+resolve "T | F"
 T
-> resolve "F & !T"
+
+resolve "F & !T"
 F
-> resolve "!(T | F) & T"
+
+resolve "!(T | F) & T"
 F
-> resolve "T | F & F"
+
+resolve "T | F & F"
 T
+
 The above examples are demonstrated using a commandline interaction to conveniently present the examples. You may have a different way of implementation of
 the interpreter, depending on the features provided by your programming language
 as long it achieves the same purpose.
