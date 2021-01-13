@@ -44,6 +44,8 @@ def simplify(_expr, target=0):
                 return sub_result
         elif _expr[target] == ")" and awaiting_operand is False:
             return resolve(result), target + 1
+        elif _expr[target] == " ":
+            target += 1
         else:
             return "Syntax error. Try again."
     return resolve(result), target + 1
