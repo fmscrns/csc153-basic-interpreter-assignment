@@ -17,18 +17,23 @@ parsing of lexemes of the logical expressions.
 Some example of the resolve interpreter function are shown below:
 
 resolve "!F"
+
 T
 
 resolve "T | F"
+
 T
 
 resolve "F & !T"
+
 F
 
 resolve "!(T | F) & T"
+
 F
 
 resolve "T | F & F"
+
 T
 
 The above examples are demonstrated using a commandline interaction to conveniently present the examples. You may have a different way of implementation of
