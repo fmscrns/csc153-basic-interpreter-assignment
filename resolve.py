@@ -39,7 +39,10 @@ def simplify(_expr, target=0):
             sub_result = simplify(_expr, target=target+1)
             if isinstance(sub_result, tuple):
                 sub_result, target = sub_result
-                result += sub_result
+                if sub_result == "T":
+                    result += "T" if negator_count % 2 == 0 else "F"
+                elif sub_result == "F":
+                    result += "F" if negator_count % 2 == 0 else "T"
             else:
                 return sub_result
         elif _expr[target] == ")" and awaiting_operand is False:
