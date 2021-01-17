@@ -8,7 +8,7 @@ def resolve(_expr, target=0):
             return "T"
     return "F"
 
-def simplify(_expr, target=0):
+def simplify(_expr, target=0, is_subgroup=False):
     awaiting_operand = True
     negator_count = 0
     result = ""
@@ -36,7 +36,7 @@ def simplify(_expr, target=0):
             target += 1
         elif _expr[target] == "(" and awaiting_operand is True and target != len(_expr) - 1:
             awaiting_operand = False
-            sub_result = simplify(_expr, target=target+1)
+            sub_result = simplify(_expr, target=target+1, is_subgroup=True)
             if isinstance(sub_result, tuple):
                 sub_result, target = sub_result
                 if sub_result == "T":
@@ -45,7 +45,7 @@ def simplify(_expr, target=0):
                     result += "F" if negator_count % 2 == 0 else "T"
             else:
                 return sub_result
-        elif _expr[target] == ")" and awaiting_operand is False:
+        elif _expr[target] == ")" and awaiting_operand is False and is_subgroup is True:
             return resolve(result), target + 1
         elif _expr[target] == " ":
             target += 1
